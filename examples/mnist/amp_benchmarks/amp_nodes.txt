@@ -1,0 +1,53 @@
+### This implementation adds amp as a decorator to the forward passes(forward function) in nodes
+
+
+Running on Device =  cuda
+initial GPU memory: 2 MiB
+
+Begin training.
+
+
+ Progress: 0 / 1 (0.0000 seconds)
+
+All activity accuracy: 9.96 (last), 9.96 (average), 9.96 (best)
+Proportion weighting accuracy: 9.96 (last), 9.96 (average), 9.96 (best)
+
+
+All activity accuracy: 68.63 (last), 39.29 (average), 68.63 (best)
+Proportion weighting accuracy: 72.30 (last), 41.13 (average), 72.30 (best)
+
+
+All activity accuracy: 78.69 (last), 52.43 (average), 78.69 (best)
+Proportion weighting accuracy: 80.86 (last), 54.37 (average), 80.86 (best)
+
+
+All activity accuracy: 80.21 (last), 59.37 (average), 80.21 (best)
+Proportion weighting accuracy: 81.04 (last), 61.04 (average), 81.04 (best)
+
+
+All activity accuracy: 80.27 (last), 63.55 (average), 80.27 (best)
+Proportion weighting accuracy: 80.83 (last), 65.00 (average), 81.04 (best)
+
+
+All activity accuracy: 79.88 (last), 66.27 (average), 80.27 (best)
+Proportion weighting accuracy: 80.02 (last), 67.50 (average), 81.04 (best)
+
+
+All activity accuracy: 79.28 (last), 68.13 (average), 80.27 (best)
+Proportion weighting accuracy: 79.61 (last), 69.23 (average), 81.04 (best)
+
+Progress: 1 / 1 (623.2544 seconds)
+Training complete.
+
+
+Begin testing
+
+
+All activity accuracy: 0.80
+Proportion weighting accuracy: 0.81 
+
+Progress: 1 / 1 (2137.0716 seconds)
+Testing complete.
+
+final GPU memory: 1583 MiB
+Time elapsed :2763.346329452994 s

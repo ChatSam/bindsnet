@@ -1,0 +1,47 @@
+Running on Device =  cuda
+
+Begin training.
+
+
+ Progress: 0 / 1 (0.0000 seconds)
+
+All activity accuracy: 10.71 (last), 10.71 (average), 10.71 (best)
+Proportion weighting accuracy: 10.71 (last), 10.71 (average), 10.71 (best)
+
+
+All activity accuracy: 76.27 (last), 43.49 (average), 76.27 (best)
+Proportion weighting accuracy: 78.36 (last), 44.53 (average), 78.36 (best)
+
+
+All activity accuracy: 80.54 (last), 55.84 (average), 80.54 (best)
+Proportion weighting accuracy: 82.45 (last), 57.17 (average), 82.45 (best)
+
+
+All activity accuracy: 80.07 (last), 61.90 (average), 80.54 (best)
+Proportion weighting accuracy: 81.63 (last), 63.28 (average), 82.45 (best)
+
+
+All activity accuracy: 80.05 (last), 65.53 (average), 80.54 (best)
+Proportion weighting accuracy: 81.10 (last), 66.85 (average), 82.45 (best)
+
+
+All activity accuracy: 80.26 (last), 67.98 (average), 80.54 (best)
+Proportion weighting accuracy: 81.14 (last), 69.23 (average), 82.45 (best)
+
+
+All activity accuracy: 78.16 (last), 69.44 (average), 80.54 (best)
+Proportion weighting accuracy: 79.28 (last), 70.67 (average), 82.45 (best)
+
+Progress: 1 / 1 (526.4015 seconds)
+Training complete.
+
+
+Begin testing
+
+
+All activity accuracy: 0.77
+Proportion weighting accuracy: 0.80 
+
+Progress: 1 / 1 (1851.8557 seconds)
+Testing complete.
+

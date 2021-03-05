@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from functools import reduce
 from operator import mul
 from typing import Iterable, Optional, Union
+from torch.cuda import amp
 
 import torch
 
@@ -94,18 +95,20 @@ class Nodes(torch.nn.Module):
 
         :param x: Inputs to the layer.
         """
-        if self.traces:
-            # Decay and set spike traces.
-            self.x *= self.trace_decay
 
-            if self.traces_additive:
-                self.x += self.trace_scale * self.s.float()
-            else:
-                self.x.masked_fill_(self.s, 1)
+        with amp.autocast(enabled=True):
+            if self.traces:
+                # Decay and set spike traces.
+                self.x *= self.trace_decay
 
-        if self.sum_input:
-            # Add current input to running sum.
-            self.summed += x.float()
+                if self.traces_additive:
+                    self.x += self.trace_scale * self.s.float()
+                else:
+                    self.x.masked_fill_(self.s, 1)
+
+            if self.sum_input:
+                # Add current input to running sum.
+                self.summed += x.float()
 
     def reset_state_variables(self) -> None:
         # language=rst
@@ -1067,6 +1070,7 @@ class DiehlAndCookNodes(Nodes):
         self.lbound = lbound  # Lower bound of voltage.
         self.one_spike = one_spike  # One spike per timestep.
 
+    @amp.autocast(enabled=True)
     def forward(self, x: torch.Tensor) -> None:
         # language=rst
         """

@@ -1,0 +1,54 @@
+Running on Device =  cuda
+initial GPU memory: 2 MiB
+Running on Device =  cuda
+initial GPU memory: 2 MiB
+Running on Device =  cuda
+initial GPU memory: 2 MiB
+
+Begin training.
+
+
+ Progress: 0 / 1 (0.0000 seconds)
+
+All activity accuracy: 10.05 (last), 10.05 (average), 10.05 (best)
+Proportion weighting accuracy: 10.05 (last), 10.05 (average), 10.05 (best)
+
+
+All activity accuracy: 69.37 (last), 39.71 (average), 69.37 (best)
+Proportion weighting accuracy: 73.25 (last), 41.65 (average), 73.25 (best)
+
+
+All activity accuracy: 78.59 (last), 52.67 (average), 78.59 (best)
+Proportion weighting accuracy: 79.79 (last), 54.36 (average), 79.79 (best)
+
+
+All activity accuracy: 79.02 (last), 59.26 (average), 79.02 (best)
+Proportion weighting accuracy: 79.86 (last), 60.74 (average), 79.86 (best)
+
+
+All activity accuracy: 79.33 (last), 63.27 (average), 79.33 (best)
+Proportion weighting accuracy: 80.02 (last), 64.59 (average), 80.02 (best)
+
+
+All activity accuracy: 78.58 (last), 65.82 (average), 79.33 (best)
+Proportion weighting accuracy: 79.42 (last), 67.06 (average), 80.02 (best)
+
+
+All activity accuracy: 78.34 (last), 67.61 (average), 79.33 (best)
+Proportion weighting accuracy: 78.92 (last), 68.76 (average), 80.02 (best)
+
+Progress: 1 / 1 (590.1834 seconds)
+Training complete.
+
+
+Begin testing
+
+
+All activity accuracy: 0.79
+Proportion weighting accuracy: 0.79 
+
+Progress: 1 / 1 (2792.8491 seconds)
+Testing complete.
+
+final GPU memory: 1583 MiB
+Time elapsed :3386.105446915999 s
