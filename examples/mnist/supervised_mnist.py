@@ -13,11 +13,7 @@ from bindsnet.encoding import PoissonEncoder
 from bindsnet.models import DiehlAndCook2015
 from bindsnet.network.monitors import Monitor
 from bindsnet.utils import get_square_assignments, get_square_weights
-from bindsnet.evaluation import (
-    all_activity,
-    proportion_weighting,
-    assign_labels,
-)
+from bindsnet.evaluation import all_activity, proportion_weighting, assign_labels
 from bindsnet.analysis.plotting import (
     plot_input,
     plot_assignments,
@@ -46,7 +42,7 @@ parser.add_argument("--test", dest="train", action="store_false")
 parser.add_argument("--plot", dest="plot", action="store_true")
 parser.add_argument("--gpu", dest="gpu", action="store_true")
 parser.add_argument("--device_id", type=int, default=0)
-parser.set_defaults(plot=True, gpu=False, train=True)
+parser.set_defaults(plot=True, gpu=True, train=True)
 
 args = parser.parse_args()
 
@@ -183,11 +179,7 @@ for (i, datum) in enumerate(dataloader):
 
         print(
             "\nAll activity accuracy: %.2f (last), %.2f (average), %.2f (best)"
-            % (
-                accuracy["all"][-1],
-                np.mean(accuracy["all"]),
-                np.max(accuracy["all"]),
-            )
+            % (accuracy["all"][-1], np.mean(accuracy["all"]), np.max(accuracy["all"]))
         )
         print(
             "Proportion weighting accuracy: %.2f (last), %.2f (average), %.2f (best)\n"
@@ -233,11 +225,7 @@ for (i, datum) in enumerate(dataloader):
         voltages = {"Ae": exc_voltages, "Ai": inh_voltages}
 
         inpt_axes, inpt_ims = plot_input(
-            image.sum(1).view(28, 28),
-            inpt,
-            label=label,
-            axes=inpt_axes,
-            ims=inpt_ims,
+            image.sum(1).view(28, 28), inpt, label=label, axes=inpt_axes, ims=inpt_ims
         )
         spike_ims, spike_axes = plot_spikes(
             {layer: spikes[layer].get("s").view(time, 1, -1) for layer in spikes},

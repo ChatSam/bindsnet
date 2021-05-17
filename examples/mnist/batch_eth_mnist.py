@@ -12,11 +12,7 @@ from time import time as t
 from bindsnet import ROOT_DIR
 from bindsnet.datasets import MNIST, DataLoader
 from bindsnet.encoding import PoissonEncoder
-from bindsnet.evaluation import (
-    all_activity,
-    proportion_weighting,
-    assign_labels,
-)
+from bindsnet.evaluation import all_activity, proportion_weighting, assign_labels
 from bindsnet.models import DiehlAndCook2015
 from bindsnet.network.monitors import Monitor
 from bindsnet.utils import get_square_weights, get_square_assignments
@@ -58,6 +54,7 @@ parser.add_argument("--amp", dest="amp", action="store_true")
 
 parser.set_defaults(plot=False, gpu=False)
 
+
 args = parser.parse_args()
 
 seed = args.seed
@@ -98,7 +95,7 @@ print("Running on Device = ", device)
 
 # Determines number of workers to use
 if n_workers == -1:
-    n_workers = gpu * 4 * torch.cuda.device_count()
+    n_workers = 0  # gpu * 1 * torch.cuda.device_count()
 
 n_sqrt = int(np.ceil(np.sqrt(n_neurons)))
 start_intensity = intensity
@@ -224,9 +221,7 @@ with autocast(enabled=amp):
 
                 # Get network predictions.
                 all_activity_pred = all_activity(
-                    spikes=spike_record,
-                    assignments=assignments,
-                    n_labels=n_classes,
+                    spikes=spike_record, assignments=assignments, n_labels=n_classes
                 )
                 proportion_pred = proportion_weighting(
                     spikes=spike_record,

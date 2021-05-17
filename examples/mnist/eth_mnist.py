@@ -14,11 +14,7 @@ from bindsnet.encoding import PoissonEncoder
 from bindsnet.models import DiehlAndCook2015
 from bindsnet.network.monitors import Monitor
 from bindsnet.utils import get_square_weights, get_square_assignments
-from bindsnet.evaluation import (
-    all_activity,
-    proportion_weighting,
-    assign_labels,
-)
+from bindsnet.evaluation import all_activity, proportion_weighting, assign_labels
 from bindsnet.analysis.plotting import (
     plot_input,
     plot_spikes,
@@ -48,7 +44,7 @@ parser.add_argument("--train", dest="train", action="store_true")
 parser.add_argument("--test", dest="train", action="store_false")
 parser.add_argument("--plot", dest="plot", action="store_true")
 parser.add_argument("--gpu", dest="gpu", action="store_true")
-parser.set_defaults(plot=True, gpu=False)
+parser.set_defaults(plot=True, gpu=True)
 
 args = parser.parse_args()
 
@@ -85,7 +81,7 @@ print("Running on Device = ", device)
 
 # Determines number of workers to use
 if n_workers == -1:
-    n_workers = gpu * 4 * torch.cuda.device_count()
+    n_workers = 0  # gpu * 4 * torch.cuda.device_count()
 
 if not train:
     update_interval = n_test
@@ -168,8 +164,8 @@ voltage_axes, voltage_ims = None, None
 # Train the network.
 print("\nBegin training.\n")
 start = t()
-labels = []
 for epoch in range(n_epochs):
+    labels = []
 
     if epoch % progress_interval == 0:
         print("Progress: %d / %d (%.4f seconds)" % (epoch, n_epochs, t() - start))
@@ -194,9 +190,7 @@ for epoch in range(n_epochs):
 
             # Get network predictions.
             all_activity_pred = all_activity(
-                spikes=spike_record,
-                assignments=assignments,
-                n_labels=n_classes,
+                spikes=spike_record, assignments=assignments, n_labels=n_classes
             )
             proportion_pred = proportion_weighting(
                 spikes=spike_record,
@@ -312,7 +306,7 @@ start = t()
 
 pbar = tqdm(total=n_test)
 for step, batch in enumerate(test_dataset):
-    if step > n_test:
+    if step >= n_test:
         break
     # Get next input sample.
     inputs = {"X": batch["encoded_image"].view(int(time / dt), 1, 1, 28, 28)}
